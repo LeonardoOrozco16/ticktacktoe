@@ -1,0 +1,10 @@
+-board, es un estado, tiene que actualizar su valor inicial (el cual sera un array vacio de 9 posiciones)
+se actualizara la posicion correspondiente al hacer click en el Square
+
+-Square es un componente pues cada vez que se haga click en el se tiene que asignar un simbolo y actualizar el estado del board
+
+-turno, estado que se actualiza luego de cada jugada
+
+-verificador de turno, otro estado que verifica de quien es el turno
+
+-isWinner, estado que verifica si la partida termino
