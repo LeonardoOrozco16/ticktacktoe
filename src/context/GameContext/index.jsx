@@ -1,9 +1,16 @@
 import React from "react";
+import confetti from "canvas-confetti";
 const GameContext = React.createContext();
 function GameProvider({ children }) {
-    const TURN = { X: "x", O: "o" };
-    const [board, setBoard] = React.useState(Array(9).fill(null));
-    const [currentTurn, setCurrentTurn] = React.useState(TURN.X);
+    const TURN = { X: '&nbsp;', O: "o" };
+    const [board, setBoard] = React.useState(() => {
+        const savedMatch = JSON.parse(localStorage.getItem("board"));
+        return savedMatch ? savedMatch : Array(9).fill(null);
+    });
+    const [currentTurn, setCurrentTurn] = React.useState(() => {
+        const savedTurn = JSON.parse(localStorage.getItem("turn"));
+        return savedTurn ? savedTurn : TURN.X;
+    });
     const [winner, setWinner] = React.useState(null);
     const Draws = [
         [0, 1, 2],
@@ -30,8 +37,11 @@ function GameProvider({ children }) {
         setBoard(newBoard);
         const haveWinner = checkWinner(newBoard);
         const nextTurn = currentTurn === TURN.X ? TURN.O : TURN.X;
+        localStorage.setItem("board", JSON.stringify(newBoard));
+        localStorage.setItem("turn", JSON.stringify(nextTurn));
         setCurrentTurn(nextTurn);
         if (haveWinner) {
+            confetti();
             setWinner(haveWinner);
         } else if (checkEndGame(newBoard)) {
             setWinner(false);
@@ -41,6 +51,8 @@ function GameProvider({ children }) {
         setBoard(Array(9).fill(null));
         setCurrentTurn(TURN.X);
         setWinner(null)
+        localStorage.removeItem("board");
+        localStorage.removeItem("turn");
     }
     function checkEndGame(newBoard) {
         console.log(newBoard.every((position) => position !== null))

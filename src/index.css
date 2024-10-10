@@ -37,7 +37,8 @@ body {
 
 .board h1 {
   color: #eee;
-  margin-bottom: 16px;
+  margin-bottom: 25px;
+  line-height: 1.2;
 }
 
 .board button {
@@ -59,18 +60,25 @@ body {
 }
 
 .board .game {
+  max-width: 300px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 5px;
 }
 
 .turn {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 15px auto;
   width: fit-content;
   position: relative;
   border-radius: 10px;
+}
+.turn > h2{
+  width: 100%;
+  margin: 10px 0;
 }
 
 .turn .square,

@@ -14,8 +14,8 @@ function AppUI() {
         </section>
         <section className='turn'>
             <h2>Es turno de:</h2>
-            <SquarePiece isSelected={currentTurn == TURN.X}>{TURN.X}</SquarePiece>
-            <SquarePiece isSelected={currentTurn == TURN.O}>{TURN.O}</SquarePiece>
+            <SquarePiece isSelected={currentTurn == TURN.X}><span>{TURN.X}</span></SquarePiece>
+            <SquarePiece isSelected={currentTurn == TURN.O}><span>{TURN.O}</span></SquarePiece>
         </section>
         {winner !== null && (
             <section className='winner'>
@@ -24,7 +24,7 @@ function AppUI() {
                         { winner === false ? 'Empate': 'Gano: '}
                     </h2>
                     <header className='win'>
-                        {winner && <SquarePiece>{winner}</SquarePiece>}
+                        {winner && <SquarePiece><span>{winner}</span></SquarePiece>}
                     </header>
                     <button type='button' onClick={restartGame}>¿Jugamos de nuevo?</button>
                 </div>
