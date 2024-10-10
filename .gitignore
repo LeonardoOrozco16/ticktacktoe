@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
+observaciones_del_proyecto.txt
 node_modules
 dist
 dist-ssr

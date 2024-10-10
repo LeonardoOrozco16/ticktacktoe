@@ -2,7 +2,7 @@ import React from "react";
 import confetti from "canvas-confetti";
 const GameContext = React.createContext();
 function GameProvider({ children }) {
-    const TURN = { X: '&nbsp;', O: "o" };
+    const TURN = { X: 'x', O: "o" };
     const [board, setBoard] = React.useState(() => {
         const savedMatch = JSON.parse(localStorage.getItem("board"));
         return savedMatch ? savedMatch : Array(9).fill(null);
